@@ -1,0 +1,33 @@
+Critical Vulnerability Documentation
+1. CVE‑2020‑1472 (Netlogon Elevation of Privilege) Severity: Critical (CVSS v3.0: 9.8/10) 
+
+
+
+Description:
+A vulnerability in the Netlogon protocol allows an attacker to perform a cryptographic downgrade and impersonate any machine, including domain controllers, effectively gaining domain administrator privileges.
+
+Affected Hosts:
+
+localhost (127.0.0.1)
+
+192.168.0.10
+
+Scan Plugin Details:
+
+Plugin ID: 12345678 (hypothetical example)
+
+Detection via SMB Netlogon handshake test
+
+Remediation:
+
+Apply Microsoft’s official patch (March 2020) via Windows Update or WSUS.
+
+Enforce secure channel Netlogon secure channel (enforce signing) by configuring group policy:
+
+Set RequireStrongKey to 1 and RequireSignOrSeal to 1.
+
+Reboot affected systems after patch installation.
+
+Post‑Fix Verification:
+Re-run the scan—CVE‑2020‑1472 should no longer appear, and the VPR risk rating will drop to “None” or “Info”.
+
